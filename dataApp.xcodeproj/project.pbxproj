@@ -15,6 +15,8 @@
 		9BB06FAE23D117FB006CAD65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB06FAC23D117FB006CAD65 /* LaunchScreen.storyboard */; };
 		9BB06FB923D117FB006CAD65 /* dataAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB06FB823D117FB006CAD65 /* dataAppTests.swift */; };
 		9BB06FC423D117FB006CAD65 /* dataAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB06FC323D117FB006CAD65 /* dataAppUITests.swift */; };
+		9BB06FD723D11CDC006CAD65 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB06FD623D11CDC006CAD65 /* Book.swift */; };
+		9BB06FD923D12082006CAD65 /* BookTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB06FD823D12082006CAD65 /* BookTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		9BB06FBF23D117FB006CAD65 /* dataAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dataAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB06FC323D117FB006CAD65 /* dataAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataAppUITests.swift; sourceTree = "<group>"; };
 		9BB06FC523D117FB006CAD65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BB06FD623D11CDC006CAD65 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		9BB06FD823D12082006CAD65 /* BookTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +103,11 @@
 		9BB06FA023D117FA006CAD65 /* dataApp */ = {
 			isa = PBXGroup;
 			children = (
+				9BB06FD123D11C83006CAD65 /* Model */,
 				9BB06FA123D117FA006CAD65 /* AppDelegate.swift */,
 				9BB06FA323D117FA006CAD65 /* SceneDelegate.swift */,
 				9BB06FA523D117FA006CAD65 /* ViewController.swift */,
+				9BB06FD823D12082006CAD65 /* BookTableVC.swift */,
 				9BB06FA723D117FA006CAD65 /* Main.storyboard */,
 				9BB06FAA23D117FB006CAD65 /* Assets.xcassets */,
 				9BB06FAC23D117FB006CAD65 /* LaunchScreen.storyboard */,
@@ -126,6 +132,14 @@
 				9BB06FC523D117FB006CAD65 /* Info.plist */,
 			);
 			path = dataAppUITests;
+			sourceTree = "<group>";
+		};
+		9BB06FD123D11C83006CAD65 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9BB06FD623D11CDC006CAD65 /* Book.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BB06FD723D11CDC006CAD65 /* Book.swift in Sources */,
+				9BB06FD923D12082006CAD65 /* BookTableVC.swift in Sources */,
 				9BB06FA623D117FA006CAD65 /* ViewController.swift in Sources */,
 				9BB06FA223D117FA006CAD65 /* AppDelegate.swift in Sources */,
 				9BB06FA423D117FA006CAD65 /* SceneDelegate.swift in Sources */,
