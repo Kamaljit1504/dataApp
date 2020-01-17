@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
@@ -19,9 +20,9 @@ class ViewController: UIViewController {
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        loadData()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(saveData), name: UIApplication.willResignActiveNotification, object: nil)
+//        loadCoreData()
+        loadCoredata()
+       // NotificationCenter.default.addObserver(self, selector: #selector(saveData), name: UIApplication.willResignActiveNotification, object: nil)
     }
     
     func getFilePath() -> String
@@ -109,5 +110,94 @@ class ViewController: UIViewController {
         }
     }
 
+    func basic()
+    {
+        
+    }
+    
+    func saveCoreData()
+    {
+        
+        //call clear core data
+        clearCoredata()
+        // create an instance of app delegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        //second step is context
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        for book in  books!
+        {
+            let bookEntity = NSEntityDescription.insertNewObject(forEntityName: "BookModel", into: managedContext)
+            bookEntity.setValue(book.title, forKey: "title")
+            bookEntity.setValue(book.author, forKey: "author")
+            bookEntity.setValue(book.pages, forKey: "pages")
+            bookEntity.setValue(book.year, forKey: "year")
+            
+        // save context
+            do{
+                try managedContext.save()
+            }
+            catch{
+                print(error)
+            }
+        }
+        
+    }
+    
+    func loadCoredata()
+    {
+        books = [Book]()
+        // create an instance of app delegate
+               let appDelegate = UIApplication.shared.delegate as! AppDelegate
+               //second step is context
+               let managedContext = appDelegate.persistentContainer.viewContext
+    //create fetch request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BookModel")
+        do{
+            let results = try managedContext.fetch(fetchRequest)
+            if results is [NSManagedObject]
+            {
+                for result in results as! [NSManagedObject]
+                {
+                    let title = result.value(forKey: "title")
+                    let author = result.value(forKey: "author")
+                    let pages = result.value(forKey: "pages")
+                    let year = result.value(forKey: "year")
+                    
+                    books?.append(Book(title: title as! String, author: author as! String, pages: pages as! Int, year: year as! Int))
+                }
+            }
+        }
+        catch{
+            print(error)
+        }
+        
+    }
+    func clearCoredata()
+    {
+                    // create an instance of app delegate
+                   let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                   //second step is context
+                   let managedContext = appDelegate.persistentContainer.viewContext
+                    //create fetch request
+                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BookModel")
+        
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do
+        {
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObjects in results
+            {
+             if let managedObjectsData = managedObjects as? NSManagedObject
+             {
+                managedContext.delete(managedObjectsData)
+                }
+            }
+        }catch{
+            print(error)
+        }
+        
+    }
 }
 
